@@ -6,7 +6,7 @@ $code = $_POST['table'] ?? get('table');
 $key = get('k');
 $table = table_by_code((string) $code);
 
-if (is_post()) { // khách nhập mã 4 số
+if (is_post()) {
     try {
         csrf_check();
         customer_join((string) $code, $key, post('code'));
@@ -21,7 +21,7 @@ if (!$table || !(int) $table['active']) {
     redirect('public/index.php');
 }
 $session = session_open_of((int) $table['id']);
-// Đã tham gia từ trước (phiên PHP còn hiệu lực) thì vào thẳng thực đơn
+
 if ($session && ($_SESSION['grants'][$table['id']] ?? null) === (int) $session['id']) {
     redirect('public/customer/menu.php?table=' . urlencode($table['code']));
 }
