@@ -25,7 +25,7 @@ $session = session_open_of((int) $table['id']);
 if ($session && ($_SESSION['grants'][$table['id']] ?? null) === (int) $session['id']) {
     redirect('public/customer/menu.php?table=' . urlencode($table['code']));
 }
-// QR in sẵn mã (do thu ngân in/hiển thị) thì vào tự động
+
 $prefill = get('c');
 if ($session && preg_match('/^\d{4}$/', $prefill)) {
     try {
