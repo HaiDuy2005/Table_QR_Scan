@@ -30,7 +30,6 @@ if (is_post()) {
     }, $self);
 }
 
-// Mã chống gửi trùng: mỗi lần mở giỏ có một mã; bấm gửi hai lần vẫn chỉ ra một đơn
 if (empty($_SESSION['order_token'])) {
     $_SESSION['order_token'] = bin2hex(random_bytes(8));
 }
